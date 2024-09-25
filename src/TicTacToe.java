@@ -6,7 +6,27 @@ public class TicTacToe {
         {"4","5","6"},
         {"7","8","9"}
     };
+    public static boolean gameOver = false;
 
+    public static void checkForWinRow(String[][] board)
+    {
+        if (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O") {
+            gameOver = true;
+        } 
+        else if (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O") {
+            gameOver = true;
+        } else if (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O") {
+            gameOver = true;
+        }
+    }
+    public static void checkForWinDiagnol(String[][] board)
+    {
+        if (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O") {
+            gameOver = true;
+        } else if (board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O") {
+            gameOver = true;
+        }
+    }
     public static void updateBoard(String[][] board, String selectedValue)
     {
         boolean updated = false;
@@ -30,7 +50,6 @@ public class TicTacToe {
     }
 
     public static void main(String[] args) {
-        boolean gameOver = false;
         while (!gameOver) {
             
         TicTacToe game = new TicTacToe();
@@ -39,8 +58,10 @@ public class TicTacToe {
         System.out.println("Enter a number between 1 and 9");
         String selectedValue = scanner.nextLine();
         updateBoard(board, selectedValue);
-        displayBoard(board);
+        checkForWinRow(board);
+        checkForWinDiagnol(board);
         }
+        displayBoard(board);
         System.out.println("game over");
     }
 
