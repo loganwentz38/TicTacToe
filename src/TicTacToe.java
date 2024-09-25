@@ -28,13 +28,11 @@ public class TicTacToe {
             System.out.println();
         }
     }
-public class Computer {
-    
-    
-}
-        
 
     public static void main(String[] args) {
+        boolean gameOver = false;
+        while (!gameOver) {
+            
         TicTacToe game = new TicTacToe();
         displayBoard(board);
         Scanner scanner = new Scanner(System.in);
@@ -42,7 +40,8 @@ public class Computer {
         String selectedValue = scanner.nextLine();
         updateBoard(board, selectedValue);
         displayBoard(board);
-
+        }
+        System.out.println("game over");
     }
 
 }
