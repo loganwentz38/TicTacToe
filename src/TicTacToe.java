@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -10,16 +11,16 @@ public class TicTacToe {
 
     public static void checkForWinRow(String[][] board)
     {
-        if (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O") {
+        if (Objects.equals(board[0][0], "O") && Objects.equals(board[0][1], "O") && Objects.equals(board[0][2], "O")) {
             gameOver = true;
         } 
-        else if (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O") {
+        else if (Objects.equals(board[1][0], "O") && Objects.equals(board[1][1], "O") && Objects.equals(board[1][2], "O")) {
             gameOver = true;
-        } else if (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O") {
+        } else if (Objects.equals(board[2][0], "O") && Objects.equals(board[2][1], "O") && Objects.equals(board[2][2], "O")) {
             gameOver = true;
         }
     }
-    public static void checkForWinDiagnol(String[][] board)
+    public static void checkForWinDiagonal(String[][] board)
     {
         if (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O") {
             gameOver = true;
@@ -58,8 +59,10 @@ public class TicTacToe {
         System.out.println("Enter a number between 1 and 9");
         String selectedValue = scanner.nextLine();
         updateBoard(board, selectedValue);
+       ComputerAI computerAI = new ComputerAI();
+       ComputerAI.main(null);
         checkForWinRow(board);
-        checkForWinDiagnol(board);
+        checkForWinDiagonal(board);
         }
         displayBoard(board);
         System.out.println("game over");
